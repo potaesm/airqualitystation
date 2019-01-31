@@ -24,7 +24,9 @@ char previousValue;
 String payload = "";
 String stationId = "A01";
 String tempValue = "";
+unsigned int tempValueInt = 0;
 String humidValue = "";
+unsigned int humidValueInt= 0;
 String dustValue = "";
 String co2Value = "";
 
@@ -92,9 +94,11 @@ void loop()
   }
 
   // Get the temp & humid value
-  if (tempHumid.readHumidity() >= 0 && tempHumid.retrieveTemperatureC() >= 0) {
-      humidValue = String(tempHumid.readHumidity());
-      tempValue = String(tempHumid.retrieveTemperatureC());
+  humidValueInt = tempHumid.retrieveTemperatureC();
+  tempValueInt = tempHumid.readHumidity();
+  if (humidValueInt >= 0 && tempValueInt >= 0) {
+      humidValue = String(humidValueInt);
+      tempValue = String(tempValueInt);
     }
 
   // Send string to Magellan
