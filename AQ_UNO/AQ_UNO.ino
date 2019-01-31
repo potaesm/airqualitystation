@@ -94,8 +94,8 @@ void loop()
   }
 
   // Get the temp & humid value
-  humidValueInt = tempHumid.retrieveTemperatureC();
-  tempValueInt = tempHumid.readHumidity();
+  humidValueInt = tempHumid.readHumidity();
+  tempValueInt = tempHumid.retrieveTemperatureC();
   if (humidValueInt >= 0 && humidValueInt <= 100 && tempValueInt >= 0 && tempValueInt <= 100) {
       humidValue = String(humidValueInt);
       tempValue = String(tempValueInt);
