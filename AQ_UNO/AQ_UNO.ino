@@ -92,8 +92,10 @@ void loop()
   }
 
   // Get the temp & humid value
-  tempValue = String(tempHumid.readHumidity());
-  humidValue = String(tempHumid.retrieveTemperatureC());
+  if (tempHumid.readHumidity() >= 0 && tempHumid.retrieveTemperatureC() >= 0) {
+      humidValue = String(tempHumid.readHumidity());
+      tempValue = String(tempHumid.retrieveTemperatureC());
+    }
 
   // Send string to Magellan
   if (dustValue != "" && co2Value != "" && tempValue != "" && humidValue != "") {
